@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApp.Models.User>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization;
+
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+    <p>Ваше ФИО: @User.Claims.Where(c => c.Type == "Name").Select(c => c.Value).SingleOrDefault()</p>
+    <p>Название организации: @User.Claims.Where(c => c.Type == "Surname").Select(c => c.Value).SingleOrDefault()</p>
+    <br>
+
+
+    <tr>
+        <td>
+            <form asp-action="Delete" asp-route-id="@User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault()" method="post">
+                <a class="btn btn-sm btn-primary" asp-action="ProfileSettings" asp-route-id="@User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault()">Изменить</a>
+                <a class="btn btn-sm btn-primary" asp-action="ProfilePassword" asp-route-id="@User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault()">Сменить пароль</a>
+                <button type="submit" class="btn btn-sm btn-danger">
+                    Удалить
+                </button>
+            </form>
+        </td>
+    </tr>
+    <br>
+
+
+    <form method="post" asp-controller="Account" asp-action="Logout">
+        <input type="submit" value="Выход" />
+    </form>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+}
