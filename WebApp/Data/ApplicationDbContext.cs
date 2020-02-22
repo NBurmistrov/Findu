@@ -19,5 +19,20 @@ namespace WebApp.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // Define composite key.
+            builder.Entity<Category>()
+                .HasKey(en => new { en.CategorysId });
+            builder.Entity<Location>()
+                .HasKey(en => new { en.LocationId});
+            builder.Entity<LostItem>()
+                .HasKey(en => new { en.LocationId });
+            builder.Entity<Status>()
+                .HasKey(en => new { en.StatusId });
+        }
     }
 }
