@@ -14,5 +14,9 @@ namespace WebApp.Models
         public string? Patronymic { get; set; }
         public DateTime? RegisterDate { get; set; }
 
+        public virtual IEnumerable<LostItem> LostItems { get; set; }
+        public virtual IEnumerable<Status> Statuses { get; set; }
+
+
     }
 }

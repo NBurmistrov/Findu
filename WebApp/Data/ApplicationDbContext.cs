@@ -9,10 +9,10 @@ namespace WebApp.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-        public DbSet<Categories> Categories { get; set; }
-        public DbSet<Locations> Locations { get; set; }
-        public DbSet<LostsItems> LostsItems { get; set; }
-        public DbSet<Statuses> Statuses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<LostItem> LostItems { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
