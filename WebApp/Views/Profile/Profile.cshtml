@@ -7,9 +7,9 @@
 }
 @if (User.Identity.IsAuthenticated)
 {
-
-    <p>Ваше ФИО: @User.Claims.Where(c => c.Type == "Name").Select(c => c.Value).SingleOrDefault()</p>
-    <p>Название организации: @User.Claims.Where(c => c.Type == "Surname").Select(c => c.Value).SingleOrDefault()</p>
+    <p>Email: @User.Claims.Where(c => c.Type == "Email").Select(c => c.Value).SingleOrDefault()</p>
+    <p>Имя: @User.Claims.Where(c => c.Type == "Name").Select(c => c.Value).SingleOrDefault()</p>
+    <p>Фамилия: @User.Claims.Where(c => c.Type == "Surname").Select(c => c.Value).SingleOrDefault()</p>
     <br>
 
 

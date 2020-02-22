@@ -39,6 +39,12 @@ namespace WebApp.Models
                 new Claim("Surname", user.Surname.ToString())
             });
             }
+            if (user.Email != null)
+            {
+                ((ClaimsIdentity)principal.Identity).AddClaims(new[] {
+                new Claim("Email", user.Email.ToString())
+            });
+            }
             return principal;
         }
     }
