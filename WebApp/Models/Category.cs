@@ -10,7 +10,7 @@ namespace WebApp.Models
     public class Category
     {
         [PrimaryKey]
-        [AutoIncrement] public Guid CategorysId { get; set; }
+        public Guid CategorysId { get; set; }
         public virtual IEnumerable<LostItem> LostItems { get; set; }
 
     }

@@ -9,7 +9,7 @@ namespace WebApp.Models
     public class Location
     {
         [PrimaryKey]
-        [AutoIncrement] public int LocationId { get; set; }
+        public Guid LocationId { get; set; }
         public virtual IEnumerable<LostItem> LostItem { get; set; }
 
     }

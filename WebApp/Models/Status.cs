@@ -11,11 +11,11 @@ namespace WebApp.Models
     public class Status
     {
         [PrimaryKey]
-        [AutoIncrement] public int StatusId { get; set; }        
+        public Guid  StatusId { get; set; }        
         public StatusEnums StatusEnum { get; set; }
 #nullable enable
         [ForeignKey(typeof(User))]
-        public string? UserId { get; set; }
+        public Guid? UserId { get; set; }
 
         public virtual User User { get; set; }
         public IEnumerable<LostItem> LostItems { get; set; }

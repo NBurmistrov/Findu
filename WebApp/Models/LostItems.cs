@@ -9,15 +9,15 @@ namespace WebApp.Models
     public class LostItem
     {
         [PrimaryKey]
-        [AutoIncrement] public int ItemId { get; set; }
+        public Guid ItemId { get; set; }
         [ForeignKey(typeof(User))]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         [ForeignKey(typeof(Category))]
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         [ForeignKey(typeof(Location))]
-        public int LocationId { get; set; }
+        public Guid LocationId { get; set; }
         [ForeignKey(typeof(Status))]
-        public int StatusId { get; set; }
+        public Guid StatusId { get; set; }
         public string Description { get; set; }
 
         public virtual User User { get; set; }
