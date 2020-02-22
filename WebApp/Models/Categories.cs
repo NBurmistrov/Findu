@@ -7,7 +7,6 @@ namespace WebApp.Models
 {
     public class Categories
     {
-        [PrimaryKey]
         public int CategoriesId { get; set; }
     }
 }

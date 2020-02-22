@@ -12,6 +12,7 @@ namespace WebApp.Models
         public virtual IEnumerable<Categories> Categories { get; set; }
         public virtual IEnumerable<Locations> Locations { get; set; }
         public virtual IEnumerable<Statuses> Statuses { get; set; }
+        public virtual IEnumerable<User> Users { get; set; }
 
     }
 }

@@ -14,5 +14,6 @@ namespace WebApp.Models
         public string? Patronymic { get; set; }
         public DateTime? RegisterDate { get; set; }
 
+
     }
 }
