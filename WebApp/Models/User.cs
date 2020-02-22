@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
-
     public class User : IdentityUser
-    {
+    {        
         public string Surname { get; set; }
         public string Name { get; set; }
+#nullable enable        
         public string? Patronymic { get; set; }
         public DateTime? RegisterDate { get; set; }
-
 
     }
 }
