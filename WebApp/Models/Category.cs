@@ -11,6 +11,7 @@ namespace WebApp.Models
     {
         [PrimaryKey]
         public Guid CategorysId { get; set; }
+        public string Type { get; set; }
         public virtual IEnumerable<LostItem> LostItems { get; set; }
 
     }
