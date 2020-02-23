@@ -1,0 +1,41 @@
+﻿@model WebApp.Models.LostItem
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization;
+
+@{
+    ViewData["Title"] = "Заполнение анкеты";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Email: @User.Claims.Where(c => c.Type == "Email").Select(c => c.Value).SingleOrDefault()</p>
+    <p>Имя: @User.Claims.Where(c => c.Type == "Name").Select(c => c.Value).SingleOrDefault()</p>
+    <p>Фамилия: @User.Claims.Where(c => c.Type == "Surname").Select(c => c.Value).SingleOrDefault()</p>
+    <br>
+
+
+    <form method="post" asp-action="Questionnaire" asp-controller="Home">
+        <p>
+            <label for="item">Что вы ищите?:</label>
+            <select name="item">
+                <option value="Человека">Человека</option>
+                <option value="Предмет">Предмет</option>
+                <option value="Животное">Животное</option>
+            </select>
+        </p>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Описание</label>
+            <input type="text" asp-for="Description" class="form-control" />
+        </div>
+
+        <tr>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Index" asp-route-id="@User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault()">Отправить</a>
+            </td>
+        </tr>
+    </form>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+}

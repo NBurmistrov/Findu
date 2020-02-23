@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WebApp.Models.User>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization;
+
+@{
+    ViewData["Title"] = "Анкета";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <tr>
+        <td>
+            <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="Questionnaire" asp-route-id="@User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault()">Заполнить анкету</a>
+        </td>
+    </tr>
+    <br>
+}
+else
+{
+    <p>Прежде чем заполнить анкету, пожалуйста авторизуйтесь</p>
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+}
